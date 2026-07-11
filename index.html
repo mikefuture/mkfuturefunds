@@ -4666,7 +4666,7 @@ function renderDashboardDateStatus() {
 
   const today = new Date();
   const dayOfWeek = today.getDay();
-  const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+  const isWeekend = dayOfWeek === 0; // Only Sunday is an off-day; Mon–Sat are working days
   const isHoliday = isPublicHoliday(today);
 
   const dateStr = today.toLocaleDateString('en-ZA', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
@@ -4683,7 +4683,7 @@ function renderDashboardDateStatus() {
     statusBg = 'var(--red-dim)';
     statusEmoji = '🏖️';
   } else if (isWeekend) {
-    status = 'Weekend';
+    status = 'Sunday (Off Day)';
     statusColor = 'var(--orange)';
     statusBg = '#fff3e0';
     statusEmoji = '🌙';
@@ -5124,7 +5124,7 @@ function updateWorkStatusBanner(user) {
 
   const today = new Date();
   const dayOfWeek = today.getDay();
-  const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+  const isWeekend = dayOfWeek === 0; // Only Sunday is an off-day; Mon–Sat are working days
   const isHoliday = isPublicHoliday(today);
 
   const dateStr = today.toLocaleDateString('en-ZA', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
@@ -5135,7 +5135,7 @@ function updateWorkStatusBanner(user) {
     status = 'Public Holiday';
     bgClass = 'banner-holiday';
   } else if (isWeekend) {
-    status = 'Weekend';
+    status = 'Sunday (Off Day)';
     bgClass = 'banner-weekend';
   }
 
